@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+
+{% block title %}Event: {{ Event.name }} {% endblock %}
+
+{% block content %}
+
+<div class="name"> Event name: {{ event.name }}</div>
+<div class="type"> Event type: {{ event.type }}</div>
+<div class="location"> Location: {{ event.location }}</div>
+<div class="startdatetime"> Date from: {{ event.startdatetime }}</div>
+<div class="enddatetime"> Date till: {{ event.enddatetime }}</div>
+<div class="organizer"> Organizer name: {{ event.organizer }}</div>
+<div class="description"> Description{{ event.description }}</div>
+<div class="photo"> Photo: {{ event.photo }}
+  <a href="{{ event.photo }}"><img src="{{ event.photo }}" width="50px"></a>
+</div>
+{% if event.user.id == request.user.id %}
+    <a href="{% url 'editprofile' %}">EDIT EVENT</a>
+{% endif %}
+
+
+
+
+
+
+
+
+
+{% endblock %}

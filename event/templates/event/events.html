@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block title %}Event - events{% endblock %}
+
+{% block content %}
+    <div class="list-of-events">List of events:</div>
+    <div class="events-list">
+        <ul>
+            {% for event in events %}
+            <li>
+                <a href="{% url 'event' event.id %}">{{ event.name }}</a> {{ event.description }}
+                {% if event.host %}
+                    Host: {{ event.host }}
+                    {% if event.host.id == request.user.id %}  <!-- Pokud je aktuálně přihlášený uživatel "majitel" místnosti -->
+                        <a href="{% url 'event_event' event.id %}">
+                            <img src="{% static 'event/cross.png'%}" alt='delete' width="12px"></a>
+                        <a href="{% url 'edit_event' event.id %}">edit ✎</a>
+
+                    {% endif %}
+                {% endif %}
+                {% if event.users_count > 0 %}
+                    ({{ event.users_count }} users, # last message date: {{ room.last_message_time }})
+                {% else %}
+                    (no message yet)
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock %}
