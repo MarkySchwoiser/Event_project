@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block title %}Delete event{% endblock %}
+
+{% block content %}
+    Do you really want to delete event <b> {{ event.name }}</b>, which contain <b> {{ participant.count }}</b>.
+    <div class="yes">
+        <a href="{% url 'delete_event_yes' event.id %}">YES</a>
+    </div>
+    <div class="no">
+        <a href="{% url 'events' %}">NO</a>
+    </div>
+
+{% endblock %}

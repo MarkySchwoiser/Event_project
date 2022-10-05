@@ -15,12 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from event_project import event
+import event.views
 
 from django.conf import settings  # add this
 from django.conf.urls.static import static  # add this
 
-urlpatterns = {
+urlpatterns = [
     path('admin/', admin.site.urls),
     path('', event.views.home, name='home'),
 
@@ -30,7 +30,7 @@ urlpatterns = {
     # path('search/<s>', chatterbox.views.search, name="search_s"),  # url patterns
 
     # path('room/<str:pk>/', chatterbox.views.room, name='room'),  # {% url 'room'
-    path('events/', event.views.rooms, name='events'),
+    path('events/', event.views.events, name='events'),
     #
     # path('create_room/', chatterbox.views.create_room, name="create_room"),
     # # path('create_room/new_room', chatterbox.views.new_room, name="create_room"),
@@ -38,4 +38,4 @@ urlpatterns = {
     # path('delete_room_yes/<pk>/', chatterbox.views.delete_room_yes, name="delete_room_yes"),
     # path('edit_room/<pk>/', chatterbox.views.EditRoom.as_view(), name="edit_room"),
 
-}
+]
