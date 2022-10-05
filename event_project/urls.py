@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', event.views.home, name='home'),
 
+
     # path(<cesta>, <view>, name=<name>)
     path('hello/<s>', event.views.hello),
     path('search/', event.views.search, name="search"),
@@ -31,11 +32,17 @@ urlpatterns = [
 
     # path('room/<str:pk>/', chatterbox.views.room, name='room'),  # {% url 'room'
     path('events/', event.views.events, name='events'),
+
     #
     # path('create_room/', chatterbox.views.create_room, name="create_room"),
     # # path('create_room/new_room', chatterbox.views.new_room, name="create_room"),
     # path('delete_room/<pk>/', chatterbox.views.delete_room, name="delete_room"),
     # path('delete_room_yes/<pk>/', chatterbox.views.delete_room_yes, name="delete_room_yes"),
     # path('edit_room/<pk>/', chatterbox.views.EditRoom.as_view(), name="edit_room"),
+
+
+    # accounts aplikace
+    path("accounts/", include("accounts.urls")),
+    path("accounts/", include("django.contrib.auth.urls")),  # login, logout,
 
 ]
